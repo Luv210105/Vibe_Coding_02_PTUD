@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+.env
+server/.env
+client/.env
+client/node_modules/
+client/dist/
+.venv/
