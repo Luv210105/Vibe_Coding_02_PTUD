@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 import { useAuth } from "./hooks/useAuth";
@@ -6,6 +7,7 @@ import BookCopiesPage from "./pages/BookCopiesPage";
 import BookTitlesPage from "./pages/BookTitlesPage";
 import BorrowPage from "./pages/BorrowPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import ThemeToggle from "./components/ThemeToggle";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ReadersPage from "./pages/ReadersPage";
@@ -18,7 +20,7 @@ function ProtectedRoute({ children, roles }) {
   const location = useLocation();
 
   if (loading) {
-    return <div className="flex min-h-screen items-center justify-center text-slate-500">Đang tải...</div>;
+    return <div className="flex min-h-screen items-center justify-center text-slate-500 dark:text-slate-300">Đang tải...</div>;
   }
 
   if (!isAuthenticated) {
@@ -34,36 +36,47 @@ function ProtectedRoute({ children, roles }) {
 
 export default function App() {
   const { isAuthenticated } = useAuth();
+  const [theme, setTheme] = useState(() => localStorage.getItem("library_theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("library_theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((current) => (current === "dark" ? "light" : "dark"));
 
   return (
-    <Routes>
-      <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />} />
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <DashboardLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<DashboardPage />} />
-        <Route path="readers" element={<ReadersPage />} />
-        <Route path="categories" element={<CategoriesPage />} />
-        <Route path="book-titles" element={<BookTitlesPage />} />
-        <Route path="book-copies" element={<BookCopiesPage />} />
-        <Route path="borrow" element={<BorrowPage />} />
-        <Route path="return" element={<ReturnPage />} />
-        <Route path="reports" element={<ReportsPage />} />
+    <>
+      <Routes>
+        <Route path="/login" element={isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />} />
         <Route
-          path="users"
+          path="/"
           element={
-            <ProtectedRoute roles={["ADMIN"]}>
-              <UsersPage />
+            <ProtectedRoute>
+              <DashboardLayout />
             </ProtectedRoute>
           }
-        />
-      </Route>
-      <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
-    </Routes>
+        >
+          <Route index element={<DashboardPage />} />
+          <Route path="readers" element={<ReadersPage />} />
+          <Route path="categories" element={<CategoriesPage />} />
+          <Route path="book-titles" element={<BookTitlesPage />} />
+          <Route path="book-copies" element={<BookCopiesPage />} />
+          <Route path="borrow" element={<BorrowPage />} />
+          <Route path="return" element={<ReturnPage />} />
+          <Route path="reports" element={<ReportsPage />} />
+          <Route
+            path="users"
+            element={
+              <ProtectedRoute roles={["ADMIN"]}>
+                <UsersPage />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+        <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
+      </Routes>
+      <ThemeToggle theme={theme} onToggleTheme={toggleTheme} />
+    </>
   );
 }

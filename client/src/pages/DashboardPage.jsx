@@ -22,8 +22,8 @@ export default function DashboardPage() {
 
   return (
     <section className="space-y-6">
-      <div className="rounded-3xl bg-gradient-to-r from-brand-700 to-brand-500 p-8 text-white shadow-panel">
-        <p className="text-sm uppercase tracking-[0.22em] text-brand-100">Tổng quan thư viện</p>
+      <div className="rounded-3xl bg-gradient-to-r from-black to-slate-800 p-8 text-white shadow-panel">
+        <p className="text-sm uppercase tracking-[0.22em] text-slate-300">Tổng quan thư viện</p>
         <h1 className="mt-3 text-3xl font-bold">Quản lý sách, độc giả và mượn trả trên một màn hình tập trung</h1>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">

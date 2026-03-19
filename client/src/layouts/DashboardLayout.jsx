@@ -9,7 +9,7 @@ export default function DashboardLayout() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen xl:flex">
+    <div className="min-h-screen text-slate-900 dark:text-white xl:flex">
       <Sidebar role={user.role} />
       <main className="flex-1 p-4 md:p-6 xl:p-8">
         <Topbar

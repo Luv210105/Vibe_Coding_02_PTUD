@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import DataTable from "../components/DataTable";
 import FormModal from "../components/FormModal";
 import { borrowService } from "../services/borrowService";
-import { formatDate, statusLabels } from "../utils/format";
+import { formatDate } from "../utils/format";
 
 export default function ReturnPage() {
   const [borrowSlips, setBorrowSlips] = useState([]);
@@ -21,9 +21,9 @@ export default function ReturnPage() {
 
   return (
     <section className="space-y-5">
-      <div className="rounded-3xl bg-white/90 p-6 shadow-panel">
-        <h1 className="text-2xl font-bold text-slate-800">Quản lý trả sách</h1>
-        <p className="mt-1 text-sm text-slate-500">Xử lý trả sách, cập nhật ghi chú và trạng thái thực tế của bản sao sách.</p>
+      <div className="rounded-3xl bg-white/90 p-6 shadow-panel dark:bg-slate-950/85">
+        <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Quản lý trả sách</h1>
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Xử lý trả sách, cập nhật ghi chú và trạng thái thực tế của bản sao sách.</p>
       </div>
       <DataTable
         columns={[
@@ -43,7 +43,7 @@ export default function ReturnPage() {
         fields={[
           { name: "ngayTra", label: "Ngày trả", type: "date", required: true },
           { name: "trangThaiTra", label: "Kết quả trả", type: "select", required: true, options: [{ value: "RETURNED", label: "Đã trả" }, { value: "LATE", label: "Trả trễ" }] },
-          { name: "tinhTrangSachSauKhiTra", label: "Tình trạng sách sau khi trả", type: "select", required: true, options: [{ value: "AVAILABLE", label: statusLabels.AVAILABLE }, { value: "DAMAGED", label: statusLabels.DAMAGED }, { value: "LOST", label: statusLabels.LOST }] },
+          { name: "tinhTrangSachSauKhiTra", label: "Tình trạng sách sau khi trả", type: "select", required: true, options: [{ value: "AVAILABLE", label: "Sẵn sàng" }, { value: "DAMAGED", label: "Hư hỏng" }, { value: "LOST", label: "Thất lạc" }] },
           { name: "ghiChuTinhTrangSach", label: "Ghi chú tình trạng sách", type: "textarea", fullWidth: true },
         ]}
         initialValues={{ ngayTra: new Date().toISOString().slice(0, 10), trangThaiTra: "RETURNED", tinhTrangSachSauKhiTra: "AVAILABLE" }}

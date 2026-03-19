@@ -1,22 +1,22 @@
 export default function DataTable({ columns, rows, emptyMessage, actions }) {
   return (
-    <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-panel">
+    <div className="overflow-hidden rounded-3xl border border-white/70 bg-white/90 shadow-panel dark:border-slate-800 dark:bg-slate-950/85">
       <div className="overflow-x-auto">
         <table className="min-w-full">
-          <thead className="bg-slate-50">
+          <thead className="bg-slate-50 dark:bg-slate-900">
             <tr>
               {columns.map((column) => (
-                <th key={column.key} className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <th key={column.key} className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                   {column.label}
                 </th>
               ))}
-              {actions ? <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">Thao tác</th> : null}
+              {actions ? <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Thao tác</th> : null}
             </tr>
           </thead>
           <tbody>
             {rows.length ? (
               rows.map((row) => (
-                <tr key={row.id} className="border-t border-slate-100 align-top">
+                <tr key={row.id} className="border-t border-slate-100 align-top dark:border-slate-800">
                   {columns.map((column) => (
                     <td key={`${row.id}-${column.key}`} className="table-cell">
                       {column.render ? column.render(row) : row[column.key] || "-"}
@@ -27,7 +27,7 @@ export default function DataTable({ columns, rows, emptyMessage, actions }) {
               ))
             ) : (
               <tr>
-                <td colSpan={columns.length + (actions ? 1 : 0)} className="px-4 py-10 text-center text-sm text-slate-500">
+                <td colSpan={columns.length + (actions ? 1 : 0)} className="px-4 py-10 text-center text-sm text-slate-500 dark:text-slate-400">
                   {emptyMessage}
                 </td>
               </tr>

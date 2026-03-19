@@ -29,10 +29,10 @@ export default function BorrowPage() {
 
   return (
     <section className="space-y-5">
-      <div className="flex flex-col gap-4 rounded-3xl bg-white/90 p-6 shadow-panel md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 rounded-3xl bg-white/90 p-6 shadow-panel dark:bg-slate-950/85 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Quản lý mượn sách</h1>
-          <p className="mt-1 text-sm text-slate-500">Lập phiếu mượn và cập nhật trạng thái bản sao sách sang đang mượn.</p>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Quản lý mượn sách</h1>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Lập phiếu mượn và cập nhật trạng thái bản sao sách sang đang mượn.</p>
         </div>
         <button className="primary-button" onClick={() => setOpen(true)}>Tạo phiếu mượn</button>
       </div>

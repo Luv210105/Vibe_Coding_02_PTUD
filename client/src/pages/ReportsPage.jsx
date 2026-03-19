@@ -29,11 +29,11 @@ export default function ReportsPage() {
 
   return (
     <section className="space-y-5">
-      <div className="rounded-3xl bg-white/90 p-6 shadow-panel">
+      <div className="rounded-3xl bg-white/90 p-6 shadow-panel dark:bg-slate-950/85">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-slate-800">Báo cáo thống kê</h1>
-            <p className="mt-1 text-sm text-slate-500">Theo dõi đầu sách được mượn nhiều và độc giả chưa trả sách.</p>
+            <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Báo cáo thống kê</h1>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Theo dõi đầu sách được mượn nhiều và độc giả chưa trả sách.</p>
           </div>
           <div className="flex flex-col gap-3 md:flex-row">
             <label>
@@ -50,7 +50,7 @@ export default function ReportsPage() {
       </div>
       <div className="grid gap-5 xl:grid-cols-2">
         <div className="space-y-3">
-          <h2 className="text-xl font-bold text-slate-800">Top đầu sách được mượn nhiều</h2>
+          <h2 className="text-xl font-bold text-slate-800 dark:text-white">Top đầu sách được mượn nhiều</h2>
           <DataTable
             columns={[
               { key: "maDauSach", label: "Mã đầu sách" },
@@ -62,7 +62,7 @@ export default function ReportsPage() {
           />
         </div>
         <div className="space-y-3">
-          <h2 className="text-xl font-bold text-slate-800">Độc giả chưa trả sách</h2>
+          <h2 className="text-xl font-bold text-slate-800 dark:text-white">Độc giả chưa trả sách</h2>
           <DataTable
             columns={[
               { key: "maDocGia", label: "Mã độc giả" },

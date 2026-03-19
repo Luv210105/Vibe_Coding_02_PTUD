@@ -56,10 +56,10 @@ export default function ResourcePage({ title, description, service, columns, fie
 
   return (
     <section className="space-y-5">
-      <div className="flex flex-col gap-4 rounded-3xl bg-white/90 p-6 shadow-panel md:flex-row md:items-center md:justify-between">
+      <div className="flex flex-col gap-4 rounded-3xl bg-white/90 p-6 shadow-panel dark:bg-slate-950/85 md:flex-row md:items-center md:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">{title}</h1>
-          <p className="mt-1 text-sm text-slate-500">{description}</p>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-white">{title}</h1>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{description}</p>
         </div>
         <div className="flex flex-col gap-3 md:flex-row">
           <input className="field-input md:w-72" placeholder={searchPlaceholder} value={keyword} onChange={(e) => setKeyword(e.target.value)} />
@@ -78,7 +78,7 @@ export default function ResourcePage({ title, description, service, columns, fie
         actions={(row) => (
           <div className="flex justify-end gap-2">
             <button className="secondary-button px-3 py-2" onClick={() => { setEditingItem(row); setOpen(true); }}>Sửa</button>
-            <button className="rounded-xl bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-600" onClick={() => handleDelete(row)}>Xóa</button>
+            <button className="rounded-xl bg-rose-50 px-3 py-2 text-sm font-semibold text-rose-600 dark:bg-rose-950/60 dark:text-rose-200" onClick={() => handleDelete(row)}>Xóa</button>
           </div>
         )}
       />
